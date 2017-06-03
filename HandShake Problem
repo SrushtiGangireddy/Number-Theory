@@ -1,0 +1,40 @@
+/*
+
+Given there are n people in the room, find the number of handshakes that occur between distinct pair of people.
+
+If there is only 1 person number of handshakes is 0.
+
+If there are more than 1 then number of possible ways of handshakes is n! / (n-2)! 2!
+ n (n-1) (n-2)! / (n-2)! 2!
+ 
+ n (n-1)/2!
+ 
+ n (n-1) / 2
+
+*/
+
+import java.io.*;
+import java.util.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        
+        for(int i=0;i<t;i++){
+            int hands = sc.nextInt();
+            
+            if(hands == 1){
+                System.out.println("0");
+            }else{
+             int temp = (hands * (hands - 1))   / 2;
+                System.out.println(temp);
+            }
+            
+        }
+        
+        
+    }
+}
+
