@@ -1,0 +1,48 @@
+/*
+Nth term in the series is tn = n*n - (n-1*n-1)
+Given the number of terms n 
+Find sn the sum of the terms in the series
+*/
+
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        
+        for(int i=0;i<n;i++){
+            long num = sc.nextInt();
+            
+            if(num == 1){
+                System.out.println("1");
+            }else{
+                 long sum = 0;
+                
+                for(long x=1;x<=num;x++){
+                    sum += solve(x);
+                 //   System.out.println(x+" "+solve(x));
+                }
+                double result = sum%(Math.pow(10,9)+7);
+                String resString = String.valueOf(result);
+                System.out.println(resString);
+                
+            }
+            
+        }
+        
+        
+    }
+    
+    public static long solve(long n){
+        if(n == 1){
+            return 1;
+        }
+        return (n*n)-((n-1)*(n-1));
+        
+    }
+    
+}
