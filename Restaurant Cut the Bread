@@ -1,0 +1,43 @@
+/*
+Given the bread of size m*n find the number of squares it can be cut into of maximum size without any leftovers.
+If the bread has to be cut into squares without any leftovers, first we have to find a size of square that is the factor of both
+
+So first find the GCD of (m,n)
+
+Number of suqares of size gcd are now m / gcd * n / gcd 
+
+*/
+
+import java.io.*;
+import java.util.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        
+        for(int i=0;i<t;i++){
+            int m = sc.nextInt();
+            int n = sc.nextInt();
+            
+            int g = gcd(m,n);
+            //System.out.println(g);
+            
+            int result = (m / g) * (n /g) ;
+            System.out.println(result);
+            
+        }
+        
+    }
+    
+    public static int gcd(int m,int n){
+        if(m == 0){
+            return n;
+        }else if(n == 0){
+            return m;
+        }
+        return gcd(n,m%n);
+    }
+    
+}
