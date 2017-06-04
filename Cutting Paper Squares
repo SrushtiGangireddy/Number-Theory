@@ -1,0 +1,24 @@
+/*
+Given the paper of size m*n, need to find the number of cuts needed to cut it into pieces of 1*1
+*/
+
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        BigInteger m = sc.nextBigInteger();
+        BigInteger n = sc.nextBigInteger();
+        BigInteger cuts = solve(m,n);
+        System.out.println(cuts);
+        
+    }
+    
+    public static BigInteger solve(BigInteger m,BigInteger n){
+        return (m.multiply(n).subtract(BigInteger.ONE));
+    }
+    
+}
