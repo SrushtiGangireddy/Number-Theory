@@ -1,0 +1,63 @@
+/*
+
+Given the numbers n and k.
+The game has the balls numbered from 0 to n-1.
+Each time the player starts with the position and reverses the balls. The position then shifts to the right.
+This process of reversing goes on until the last ball is found.
+In the last the index of particular balls should be found.
+
+
+0 1 2 3 4 ==> 4 3 2 1 0 ==> 4 0 1 2 3 ==> 4 0 3 2 1 ==> 4 0 3 1 2 ==> 4 0 3 1 2
+
+*/
+
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        
+        for(int i=0;i<t;i++){
+            int n = sc.nextInt();
+            int k = sc.nextInt();
+            
+            Integer[] numbers = new Integer[n];
+            
+            for(int j=0;j<n;j++){
+                numbers[j] = j;
+            }
+            
+            Integer[] numbersCopy = numbers.clone();
+            
+            for(int x=0;x<n;x++){
+                
+              Integer[] reverse=new Integer[n-x];
+              System.arraycopy(numbers,x,reverse,0,n-x);
+              List<Integer> al = Arrays.asList(reverse);
+              Collections.reverse(al);
+              //System.out.println(al);
+                int tempInd = x;
+              for(Integer a:al){
+                  numbers[tempInd++]=a;
+              }               
+            }
+            
+            for(int p=0;p<n;p++){
+               if(numbers[p] == k){
+                   System.out.println(p);
+               }
+            }
+       //     System.out.println();
+            
+            
+            
+        }
+        
+        
+    }
+}
+
