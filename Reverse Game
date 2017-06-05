@@ -61,3 +61,68 @@ public class Solution{
     }
 }
 
+/*
+
+Solution 2:
+
+If you take two three range of numbers and reverse them accordingly you will find the pattern among them
+0 1 2 3 4 5 6
+
+In the final reverse version the first number would be the last the second would be the first then the third would be second from last and the next second from first.
+One from last and one from first is the final pattern.
+
+Based on that we find the number k in o(1) time.
+
+*/
+
+ import java.io.*;
+import java.util.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        
+        for(int i=0;i<t;i++){
+            
+            int n = sc.nextInt();
+            int k = sc.nextInt();
+            
+            int[] numbers = new int[n];
+            int[] reverse = new int[n];
+            
+            for(int j=0;j<n;j++){
+                numbers[j]=j;
+            }
+            
+         
+            int y =n-1;
+            
+            for(int x=0;x<n;x=x+2){
+                reverse[x]=numbers[y--];
+            }
+            
+            y = 0;
+            
+            for(int z=1;z<n;z=z+2){
+                reverse[z]=numbers[y++];
+            }
+            
+            for(int p=0;p<n;p++){
+                if(reverse[p] == k){
+                     System.out.println(p);
+                }
+            }
+           
+            
+            
+            
+            
+            
+        }
+        
+        
+    }
+}
+
