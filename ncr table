@@ -1,0 +1,38 @@
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        
+        for(int i=0;i<t;i++){
+            int n = sc.nextInt();
+            printPascal(n);
+        }
+        
+    }
+    
+    public static void printPascal(int n){
+        for(int i=0;i<=n;i++){
+            System.out.print(binomialCoefficient(n,i)+" ");
+        }
+        System.out.println();
+    }
+    
+    public static long binomialCoefficient(int a,int b){
+        long result = 1;
+        if(b > a-b){
+            b = a-b;
+        }
+        for(int i=0;i<b;++i){
+            result *= (a-i);
+            result /= (i+1);
+        }
+        return result;
+    }
+    
+    
+}
