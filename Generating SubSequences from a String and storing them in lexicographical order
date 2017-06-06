@@ -1,0 +1,60 @@
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution{
+   
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        
+        for(int i=0;i<t;i++){
+            
+            ArrayList<String> words=new ArrayList<String>();
+            
+            int n = sc.nextInt();
+            String temp=sc.next();
+            char[] sequence=new char[n];
+            
+            for(int j=0;j<n;j++){
+                sequence[j]=temp.charAt(j);
+            }
+            
+            printSubSequences(sequence,n,words); 
+            Collections.sort(words);
+            for(String word:words){
+                System.out.println(word);
+            }
+        }
+        
+        
+    }
+    
+    
+    public static void printSubSequences(char[] seq,int n,ArrayList<String> words){
+        
+        int opsize=(int)Math.pow(2,n);
+        
+        for(int counter=1;counter<opsize;counter++){
+            String temp="";
+            for(int j=0;j<n;j++){
+                
+                if (BigInteger.valueOf(counter).testBit(j))
+               //     System.out.print(seq[j]+" ");
+                if(temp.length()==0){
+                    temp=String.valueOf(seq[j]);
+                }else{
+                    temp += String.valueOf(seq[j]);
+                }
+            }//System.out.println();
+            words.add(temp);
+        }
+        
+        
+    }
+    
+    
+    
+}
+
