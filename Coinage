@@ -1,0 +1,131 @@
+/*
+
+Given the denominations of currency and the maximum number of each currency possible find the number of ways in which the given amount can be achieved.
+
+IF the goal is 15 rupees and there are 1,2,5,10 rupee currency on which the limit is 2,3,1,1 Find the number of ways of selecting the currency to get 15.
+
+*/
+
+/* Solution 1 (Brute Force) */
+
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        
+        for(int i=0;i<t;i++){
+            int n = sc.nextInt();
+            
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int c = sc.nextInt();
+            int d = sc.nextInt();
+            
+            int counter = 0;
+            
+            for(int A=0;A<=a;A++){
+                for(int B=0;B<=b;B++){
+                    for(int C=0;C<=c;C++){
+                        for(int D=0;D<=d;D++){
+                            if((A+2*B+5*C+10*D) == n){
+                                counter++;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            System.out.println(counter);   
+        }
+        
+    }
+}
+
+/* Optimized Solution 2 Checking the constraint in each loop */
+
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        
+        for(int i=0;i<t;i++){
+            int n = sc.nextInt();
+            
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int c = sc.nextInt();
+            int d = sc.nextInt();
+            
+            int counter = 0;
+            
+            for(int A=0;A<=a && (A <= n);A++){
+                for(int B=0;B<=b && (A+2*B <= n);B++){
+                    for(int C=0;C<=c && (A+2*B+5*C <= n);C++){
+                        for(int D=0;D<=d && (A+2*B+5*C+10*D <= n);D++){
+                            if((A+2*B+5*C+10*D) == n){
+                                counter++;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            System.out.println(counter);   
+        }
+        
+    }
+}
+
+/* Optimized Solution 3 */
+
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        
+        for(int i=0;i<t;i++){
+            int n = sc.nextInt();
+            
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int c = sc.nextInt();
+            int d = sc.nextInt();
+            
+            int counter = 0;
+            
+         
+                for(int B=0;B<=b && (B*2 <= n);B++){
+                    for(int C=0;C<=c && (B*2+C*5 <= n);C++){
+                        for(int D=0;D<=d && (B*2+C*5+D*10 <= n);D++){
+                            if((2*B+5*C+10*D) >= n-a){
+                                counter++;
+                            }
+                        }
+                    }
+                }
+            
+            
+            System.out.println(counter);   
+        }
+        
+    }
+}
+
+   
+
+   
