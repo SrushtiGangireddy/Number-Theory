@@ -1,0 +1,65 @@
+/*
+
+Given two lists M and N with M+N disinct integers. Find the number of ways in which both the lists can be merged without changing the order of the elements.
+This problem is equivalent to arranging M objects of one kind and N objects of other kind in a row which is a standard combinatorics problem
+N+M C N ==> (N+M)! / N! M!
+
+Formula for NCK
+
+    N!
+ --------
+ (N-K)!K!
+
+Formula for NCK+1
+
+       N!                N!                   N!               N!      (N-K)
+---------------- = --------------- = -------------------- = -------- x -----
+(N-(K+1))!(K+1)!   (N-K-1)! (K+1)!   (N-K)!/(N-K) K!(K+1)   (N-K)!K!   (K+1)
+
+static BigInteger binomial(final int N, final int K) {
+    BigInteger ret = BigInteger.ONE;
+    for (int k = 0; k < K; k++) {
+        ret = ret.multiply(BigInteger.valueOf(N-k))
+                 .divide(BigInteger.valueOf(k+1));
+    }
+    return ret;
+}
+
+*/
+
+
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        
+        int md=1000000007;
+        
+        int t = sc.nextInt();
+        
+        for(int i=0;i<t;++i){
+            int m=sc.nextInt();
+            int n=sc.nextInt();
+            
+            BigInteger result=binomial(m+n,n).mod(new BigInteger(md+""));
+            System.out.println(result);
+        }
+        
+        
+    }
+    
+    public static BigInteger binomial(int m,int k){
+        
+         BigInteger ret = BigInteger.ONE;
+         for (int x = 0; x < k; x++) {
+            ret = ret.multiply(BigInteger.valueOf(m-x))
+                 .divide(BigInteger.valueOf(x+1));
+            }
+        return ret;
+
+    }
+    
+}
