@@ -1,0 +1,57 @@
+/*
+
+Given a set of numbers find and print all the subsets and count the number of distinct subsets that sum to an even number.
+We use binary numbers and bit manipulation to find all the subsets.
+For any n number of elements present in the set, there would be 2 power n - 1 subsets.
+Example where n=4
+0000,0001,0010,0100,1000,0011,0110,1100,1001,0101,0111,1101,1110,1111
+*/
+
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        ArrayList<ArrayList<Integer>> al=new ArrayList<ArrayList<Integer>>();
+        int[] set=new int[n];
+        
+        for(int i=0;i<n;i++){
+            set[i]=sc.nextInt();
+        }
+        int counter=0;
+        findSubsets(set,al);
+        
+        for(ArrayList<Integer> a:al){
+            int sum = 0;
+            for(Integer num:a){
+                sum += num;
+            }
+            if(sum%2 == 0 && a.size() > 0){
+                counter=counter+1;
+            }
+        }
+        System.out.println(counter);
+        
+        
+    }
+    
+    public static void findSubsets(int[] set,ArrayList<ArrayList<Integer>> al){
+        int n=set.length;
+        
+        // loop runs until i is less than 1111 n times.. For example if n is 5 loop runs until i is less than 11111 ==> 32
+        for(int i=0;i<(1<<n);i++){
+            ArrayList<Integer> list=new ArrayList<Integer>();
+            for(int j=0;j<n;j++){
+                if((i & (1<<j)) > 0){
+                    list.add(set[j]);
+                }
+            }al.add(list);
+        }
+        
+    }
+    
+}
